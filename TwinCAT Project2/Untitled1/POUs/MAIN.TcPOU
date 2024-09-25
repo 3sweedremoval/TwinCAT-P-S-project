@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{d02a0e1e-2859-4a94-b975-e1c9c8f0c3fe}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	counter : INT := 0;
+	knop : BOOL :=FALSE;
+	lamp :bool :=false;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[counter := counter +1; 
+
+IF knop THEN
+	lamp :=TRUE;
+ELSE
+	lamp:=FALSE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="2" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="12" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
