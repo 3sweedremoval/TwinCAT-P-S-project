@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL" Id="{bd177064-a0ee-43fc-a48f-6aabfaaeb17b}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	SpeedSetting : INT := 0;
+	StartButton : BOOL := FALSE;
+	UpperSwitch : BOOL := FALSE;
+	DownSwitch: BOOL := FALSE;
+	LubricationPump : BOOL := FALSE;
+	SawEnabled	: BOOL := FALSE;
+	SawDown : BOOL := FALSE;
+	SawUp : BOOL := FALSE;
+	Clamping: BOOL := FALSE;
+	StartClamping : BOOL := FALSE;
+	ClampingDone : BOOL :=FALSE;
+	
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
