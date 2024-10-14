@@ -5,16 +5,41 @@
 VAR_INPUT
 	actualPos : INT ;
 	requiredPos : INT;
-	speed: int;
+	speed: INT;
+
+	
 END_VAR
 VAR
+	timer : ton;
+	newPos : int;
+	startTimer: BOOL;
+	calculatedTime: time;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[calculatedTime :=INT_TO_TIME(1000/speed);
+timer(in:= startTimer, pt:= calculatedTime);
+startTimer:= TRUE;
+IF timer.Q THEN
+	startTimer:=FALSE;
+	IF requiredPos < actualpos THEN
+		newpos := actualPos -1;
+	ELSIF requiredpos > actualpos THEN
+		newpos := actualPos +1; 
+	END_IF
+END_IF
+]]></ST>
     </Implementation>
     <LineIds Name="POU_MoveToPos">
-      <LineId Id="7" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="35" Count="3" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="23" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
