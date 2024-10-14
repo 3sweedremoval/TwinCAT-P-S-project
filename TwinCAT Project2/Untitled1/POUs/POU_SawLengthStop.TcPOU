@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="POU_SawLengthStop" Id="{b0fa660f-49cd-4e94-aea0-da98159bb3ad}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM POU_SawLengthStop
+VAR
+	requiredSawingLength : INT;
+	sawingStopPos: int;
+	posReached : BOOL;	
+	movingSpeed: INT := 20; // mm/s
+	metalAgainstStop: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[requiredSawingLength := gvl.requiredSawingLength;
+
+IF gvl.startButtonLengthStop THEN
+	IF requiredSawingLength = sawingStopPos THEN
+		posReached := TRUE;
+	ELSE
+		sawingStopPos := pou_moveToPos(actualPos := sawingStopPos, requiredPos := requiredSawingLength, speed := movingSpeed);
+	END_IF
+END_IF
+
+IF metalAgainstStop THEN
+	gvl.metalIsToStop := TRUE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="POU_SawLengthStop">
+      <LineId Id="15" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="5" Count="1" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="24" Count="1" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
