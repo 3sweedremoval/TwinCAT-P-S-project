@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Task Name="Task_Clamp" Id="{8a8c3303-3fb7-4bdf-900a-2f7fecf4ccb8}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>10000</CycleTime>
+    <Priority>2</Priority>
+    <PouCall>
+      <Name>POU_Clamp</Name>
+    </PouCall>
+    <TaskFBGuid>{bb8c4493-fd11-4f57-8d8c-434ef34a204d}</TaskFBGuid>
+    <Fb_init>{5343d6a5-8ab8-4f44-8923-f6bfde16fe51}</Fb_init>
+    <Fb_exit>{0307516b-c931-4f88-96b8-14b20767357e}</Fb_exit>
+    <CycleUpdate>{5562ed12-8f8e-4b76-b089-6e20229812ef}</CycleUpdate>
+    <PostCycleUpdate>{12366844-46ec-456e-b4f9-c7402043b29a}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>

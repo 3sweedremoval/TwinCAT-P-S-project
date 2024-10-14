@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="POU_MoveToPos" Id="{f1b905d7-21a7-4edb-bcb9-64fac2a8debd}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION POU_MoveToPos : INT
+VAR_INPUT
+	actualPos : INT ;
+	requiredPos : INT;
+	speed: int;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <LineIds Name="POU_MoveToPos">
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

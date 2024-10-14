@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="POU_Saw" Id="{20362c0f-2be3-4923-bb5c-847f6c28e7d5}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM POU_Saw
+VAR
+	start_timer :BOOL;
+	timer : ton;
+	timer1: ton;
+	PT: INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+IF gvl.StartButton THEN
+	gvl.StartClamping := TRUE;
+
+END_IF
+
+// task clamp
+IF NOT gvl.StartClamping THEN
+	gvl.StateClamp := 0;
+ELSIF gvl.StateClamp =0 THEN
+	gvl.StateClamp := 1;
+END_IF
+
+CASE gvl.StateClamp OF 
+0:
+
+;
+1:
+gvl.Clamping := TRUE;
+gvl.StateClamp := 2;
+2:
+
+start_timer := TRUE;
+IF timer.Q THEN
+	start_timer:= FALSE;
+	gvl.StateClamp := 3;
+END_IF
+3:
+gvl.Clamping := FALSE;
+IF gvl.Clamping = FALSE THEN
+	GVL.StateClamp := 4;
+END_IF
+
+4:
+gvl.StateClamp := 0;
+//
+gvl.StartClamping := false;
+END_CASE 
+
+
+timer(IN:= start_timer, PT:= T#2000MS);]]></ST>
+    </Implementation>
+    <LineIds Name="POU_Saw">
+      <LineId Id="53" Count="1" />
+      <LineId Id="6" Count="2" />
+      <LineId Id="10" Count="5" />
+      <LineId Id="50" Count="0" />
+      <LineId Id="17" Count="3" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="21" Count="7" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="29" Count="3" />
+      <LineId Id="44" Count="2" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="38" Count="1" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -4,20 +4,53 @@
     <Declaration><![CDATA[PROGRAM POU_UserInterface
 VAR
 	sawingLength : INT;
+	sawingSpeed: int;
 	startButtonLengthStop: BOOL;
 	messageMoveMetalToStop : BOOL;
 	startClamp : BOOL;
 	oilProblem : BOOL;
-	sawingDone: BOOL; 
+	sawingDone: BOOL;
 	
 	
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[IF startButtonLengthStop THEN
+	gvl.requiredSawingLength := sawingLength;
+END_IF
+
+IF gvl.stopPosReached THEN
+	messagemovemetaltostop := TRUE;
+END_IF
+
+IF gvl.metalIsToStop AND startClamp THEN
+	gvl.startClamp := TRUE;
+END_IF
+
+IF gvl.oilProblem THEN
+	oilProblem := TRUE;
+END_IF
+
+IF gvl.sawingDone THEN
+	sawingDone :=TRUE;
+END_IF]]></ST>
     </Implementation>
     <LineIds Name="POU_UserInterface">
       <LineId Id="5" Count="0" />
+      <LineId Id="14" Count="1" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="18" Count="1" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="23" Count="1" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="32" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>

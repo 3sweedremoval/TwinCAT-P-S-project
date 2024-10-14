@@ -92,7 +92,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"MAIN.knop"</v>
+                      <v n="Value">"GVL.StartButton"</v>
                     </o>
                   </l>
                 </o>
@@ -138,7 +138,7 @@
                     </o>
                     <o>
                       <v n="Id">2422045748L</v>
-                      <v n="Value">70</v>
+                      <v n="Value">69</v>
                     </o>
                     <o>
                       <v n="Id">2134141914L</v>
@@ -186,7 +186,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"MAIN.lamp"</v>
+                      <v n="Value">"GVL.Clamping"</v>
                     </o>
                   </l>
                 </o>
@@ -353,7 +353,7 @@
             </o>
             <v n="DialogDut">{cd76fb0c-6d7b-4777-9df3-0dcf028fc0bb}</v>
           </o>
-          <v n="LastUsedIdForIdentifier">2</v>
+          <v n="LastUsedIdForIdentifier">4</v>
           <o n="TextDocument" t="TextDocument">
             <a n="TextLines" cet="TextLine">
               <o>
@@ -390,12 +390,12 @@
             <d2 n="Size" ckt="Int32" cvt="VisualObjectSize">
               <v>0</v>
               <o>
-                <v n="Width">552</v>
+                <v n="Width">551</v>
                 <v n="Height">211</v>
               </o>
               <v>1</v>
               <o>
-                <v n="Width">552</v>
+                <v n="Width">551</v>
                 <v n="Height">211</v>
               </o>
             </d2>
