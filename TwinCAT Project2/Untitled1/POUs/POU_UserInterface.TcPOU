@@ -8,7 +8,7 @@ VAR
 	messageMoveMetalToStop : BOOL;
 	startClamp : BOOL;
 	oilProblem : BOOL;
-	sawingDone: BOOL;
+	sawingDone: BOOL; 
 	
 	
 END_VAR
