@@ -3,13 +3,34 @@
   <POU Name="POU_Clamp" Id="{1f4ba244-669d-4445-be61-dc452ae93b0d}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM POU_Clamp
 VAR
+	
+	clamping: BOOL;
+	clampingDone : bool;
+	timer: Ton;
+	Clamptime: TIME := T#3S;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[clamping := gvl.startClamp;
+gvl.clamped := clampingDone;
+timer(in:=clamping, pt:=Clamptime);		
+
+IF timer.Q THEN
+	clampingDone := TRUE;
+ELSE
+	clampingDone := FALSE;
+END_IF]]></ST>
     </Implementation>
     <LineIds Name="POU_Clamp">
-      <LineId Id="5" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="23" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
