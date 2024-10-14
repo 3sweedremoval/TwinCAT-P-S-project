@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="POU_UserInterface" Id="{84ac30c7-5aab-413f-8e32-caf8995e0e5a}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM POU_UserInterface
+VAR
+	sawingLength : INT;
+	startButtonLengthStop: BOOL;
+	messageMoveMetalToStop : BOOL;
+	startClamp : BOOL;
+	oilProblem : BOOL;
+	sawingDone: BOOL;
+	
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <LineIds Name="POU_UserInterface">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
