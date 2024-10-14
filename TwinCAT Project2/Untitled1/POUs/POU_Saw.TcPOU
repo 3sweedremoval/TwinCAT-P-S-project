@@ -3,20 +3,56 @@
   <POU Name="POU_Saw" Id="{20362c0f-2be3-4923-bb5c-847f6c28e7d5}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM POU_Saw
 VAR
-	start_timer :BOOL;
-	timer : ton;
-	timer1: ton;
-	PT: INT;
+	sawingSpeed : INT;
+	startSawing: BOOL;
+	bottomPos: INT := 0;
+	topPos: INT := 100;
+	saw :BOOL;
+	actualPos: INT;
+	sawingDone: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
+      <ST><![CDATA[sawingSpeed := gvl.sawingSpeed;
+startSawing:= gvl.clamped;
+gvl.sawingProcessDone := sawingDone;
 
+IF NOT startsawing THEN
+	actualpos := toppos;
+ELSE
+	sawingDone:= FALSE;
+	IF startSawing THEN
+		saw := TRUE;
+		actualpos := pou_moveToPos(actualPos := actualPos, requiredPos := bottomPos, speed := sawingSpeed);
+	END_IF
+
+	IF actualpos := bottompos THEN
+		saw := FALSE;
+		actualpos := pou_moveToPos(actualPos := actualPos, requiredPos := toppos, speed := sawingSpeed);
+		ELSIF actualpos = toppos THEN
+			sawingDone:= TRUE;			
+	END_IF	
+	
+END_IF
+
+gvl.sawingDone:= sawingdone;
 ]]></ST>
     </Implementation>
     <LineIds Name="POU_Saw">
-      <LineId Id="53" Count="1" />
       <LineId Id="5" Count="0" />
+      <LineId Id="59" Count="0" />
+      <LineId Id="97" Count="0" />
+      <LineId Id="68" Count="2" />
+      <LineId Id="80" Count="0" />
+      <LineId Id="96" Count="0" />
+      <LineId Id="82" Count="7" />
+      <LineId Id="92" Count="1" />
+      <LineId Id="81" Count="0" />
+      <LineId Id="91" Count="0" />
+      <LineId Id="71" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="79" Count="0" />
+      <LineId Id="78" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
