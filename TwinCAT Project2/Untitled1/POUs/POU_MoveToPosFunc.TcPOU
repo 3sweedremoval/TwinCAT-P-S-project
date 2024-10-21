@@ -1,43 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <POU Name="POU_MoveToPos" Id="{019e9391-8b31-416e-bfec-603f50debe2b}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK PUBLIC POU_MoveToPos
+  <POU Name="POU_MoveToPosFunc" Id="{f1b905d7-21a7-4edb-bcb9-64fac2a8debd}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION POU_MoveToPosFunc : INT
 VAR_INPUT
-	requiredPos: INT;
-	actualpos: INT;
+	actualPos : INT ;
+	requiredPos : INT;
 	speed: INT;
-END_VAR
-VAR_OUTPUT	
-	newpos : INT;
+
+	
 END_VAR
 VAR
+	timer : ton;
+	newPos : int;
 	startTimer: BOOL;
 	calculatedTime: TIME;
-
-	timer: ton;
-	testbuitenif: INT;
-	test: INT;
-
+	test : INT := 0;
+	testbuitenif :int := 0;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[startTimer:= TRUE;
 calculatedTime :=INT_TO_TIME(1000/speed);
 timer(in:= startTimer, pt:= calculatedTime);
-//testbuitenif := testbuitenif + 1;
+testbuitenif := testbuitenif + 1;
 IF timer.Q OR TRUE THEN
-	//test := test + 1;
+	test := test + 1;
 	startTimer:=FALSE;
 	IF requiredPos < actualpos THEN
 		newpos := actualPos -1;
 	ELSIF requiredpos > actualpos THEN
 		newpos := actualPos +1; 
 	END_IF
-END_IF]]></ST>
+	POU_MoveToPosFunc := newpos;
+END_IF
+//pou_movetopos := newpos;
+//RETURN pou_movetopos;
+//pou_movetopos:= actualpos + requiredpos+speed;]]></ST>
     </Implementation>
-    <LineIds Name="POU_MoveToPos">
-      <LineId Id="17" Count="11" />
-      <LineId Id="9" Count="0" />
+    <LineIds Name="POU_MoveToPosFunc">
+      <LineId Id="93" Count="15" />
+      <LineId Id="23" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
