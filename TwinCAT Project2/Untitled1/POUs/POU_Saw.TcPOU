@@ -10,6 +10,7 @@ VAR
 	saw :BOOL;
 	actualPos: INT;
 	sawingDone: BOOL;
+	pou_movetopos1 : pou_movetopos;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -23,12 +24,12 @@ ELSE
 	sawingDone:= FALSE;
 	IF startSawing THEN
 		saw := TRUE;
-		actualpos := pou_moveToPos(actualPos := actualPos, requiredPos := bottomPos, speed := sawingSpeed);
+		POU_MoveToPos1(actualPos := actualPos, requiredPos := bottomPos, speed := sawingSpeed, newpos => actualpos);
 	END_IF
 
-	IF actualpos := bottompos THEN
+	IF actualpos = bottompos THEN
 		saw := FALSE;
-		actualpos := pou_moveToPos(actualPos := actualPos, requiredPos := toppos, speed := sawingSpeed);
+		POU_MoveToPos1(actualPos := actualPos, requiredPos := toppos, speed := sawingSpeed, newpos => actualpos);
 		ELSIF actualpos = toppos THEN
 			sawingDone:= TRUE;			
 	END_IF	
