@@ -14,6 +14,7 @@ VAR
 	goUp : BOOL;
 	state : INT;
 	timer : ton;
+	timer1 : ton;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -23,7 +24,7 @@ gvl.sawingProcessDone := sawingDone;
 
 IF NOT startsawing THEN
 	state := 0;
-	actualpos := 100;
+	
 ELSIF state = 0 AND NOT sawingDone THEN
 	state :=1;
 END_IF
@@ -32,51 +33,30 @@ CASE state OF
 	0:
 	;
 	1:
-		POU_MoveToPos1(actualPos := actualPos, requiredPos := bottomPos, speed := sawingSpeed, newpos => actualpos);
-		IF actualpos <= bottompos THEN
-			state := 2;
+		actualpos := 100;
+		timer1(in :=TRUE, pt:= T#2S);
+		IF timer1.q THEN			
+			state:= 2;
+			timer1(in:= FALSE);
 		END_IF
 	2:
-	 	timer(in:= TRUE, pt := T#2S);
-		IF timer.Q THEN
+		POU_MoveToPos1(actualPos := actualPos, requiredPos := bottomPos, speed := sawingSpeed, newpos => actualpos);
+		IF actualpos <= bottompos THEN
 			state := 3;
 		END_IF
 	3:
+	 	timer(in:= TRUE, pt := T#2S);
+		IF timer.Q THEN
+			state := 4;
+		END_IF
+	4:
 		POU_MoveToPos1(actualPos := actualPos, requiredPos := toppos, speed := sawingSpeed, newpos => actualpos);
 	 	IF actualpos >= toppos THEN
 			state := 0;
 		END_IF
 		sawingDone:= TRUE;
 END_CASE
-(*
-IF NOT startsawing THEN
-	actualpos := toppos;
-ELSE
-	sawingDone:= FALSE;
-	IF startSawing AND (actualpos = toppos) THEN
-		saw := TRUE;
-		POU_MoveToPos1(actualPos := actualPos, requiredPos := bottomPos, speed := sawingSpeed, newpos => actualpos);
-	END_IF
-	
-	IF actualpos <= bottompos AND NOT sawingdone THEN
-		goup := TRUE;
-	END_IF
-	
-	IF goup THEN
-		saw := FALSE;
-		POU_MoveToPos1(actualPos := actualPos, requiredPos := toppos, speed := sawingSpeed, newpos => actualpos);
-	ELSIF actualpos = toppos THEN
-		sawingDone:= TRUE;			
-	END_IF	
-	
-END_IF
-
-//IF actualpos = bottompos THEN
-	
-//END_IF
-
-gvl.sawingDone:= sawingdone;
-*)]]></ST>
+]]></ST>
     </Implementation>
     <LineIds Name="POU_Saw">
       <LineId Id="5" Count="0" />
@@ -88,7 +68,13 @@ gvl.sawingDone:= sawingdone;
       <LineId Id="126" Count="0" />
       <LineId Id="118" Count="1" />
       <LineId Id="121" Count="0" />
-      <LineId Id="127" Count="1" />
+      <LineId Id="127" Count="0" />
+      <LineId Id="152" Count="1" />
+      <LineId Id="158" Count="0" />
+      <LineId Id="154" Count="1" />
+      <LineId Id="160" Count="0" />
+      <LineId Id="156" Count="0" />
+      <LineId Id="128" Count="0" />
       <LineId Id="132" Count="3" />
       <LineId Id="129" Count="0" />
       <LineId Id="140" Count="0" />
@@ -97,23 +83,6 @@ gvl.sawingDone:= sawingdone;
       <LineId Id="144" Count="3" />
       <LineId Id="143" Count="0" />
       <LineId Id="122" Count="0" />
-      <LineId Id="68" Count="2" />
-      <LineId Id="80" Count="0" />
-      <LineId Id="96" Count="0" />
-      <LineId Id="82" Count="4" />
-      <LineId Id="113" Count="0" />
-      <LineId Id="116" Count="1" />
-      <LineId Id="114" Count="0" />
-      <LineId Id="87" Count="2" />
-      <LineId Id="92" Count="1" />
-      <LineId Id="81" Count="0" />
-      <LineId Id="91" Count="0" />
-      <LineId Id="71" Count="0" />
-      <LineId Id="110" Count="0" />
-      <LineId Id="109" Count="0" />
-      <LineId Id="111" Count="1" />
-      <LineId Id="63" Count="0" />
-      <LineId Id="79" Count="0" />
       <LineId Id="78" Count="0" />
     </LineIds>
   </POU>
