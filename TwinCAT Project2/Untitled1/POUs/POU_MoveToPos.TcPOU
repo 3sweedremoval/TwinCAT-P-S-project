@@ -8,7 +8,7 @@ VAR_INPUT
 	speed: INT;
 END_VAR
 VAR_OUTPUT	
-	newpos : INT;
+	newpos : INT:=100;
 END_VAR
 VAR
 	startTimer: BOOL;
