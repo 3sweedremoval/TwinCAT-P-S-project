@@ -8,7 +8,7 @@ VAR_INPUT
 	speed: INT;
 END_VAR
 VAR_OUTPUT	
-	newpos : INT:=100;
+	newpos : INT;
 END_VAR
 VAR
 	startTimer: BOOL;
@@ -21,32 +21,31 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF timer.IN = FALSE THEN
+      <ST><![CDATA[
+IF timer.IN = FALSE THEN
 	 starttimer:=TRUE;
 END_IF
 calculatedTime :=INT_TO_TIME(1000/speed);
 timer(in:= startTimer, pt:= calculatedTime);
-//testbuitenif := testbuitenif + 1;
 IF timer.Q THEN
-	//test := test + 1;
 	startTimer:=FALSE;
 	IF requiredPos < actualpos THEN
 		newpos := actualPos -1;
-		//startTimer:= TRUE;
 	ELSIF requiredpos > actualpos THEN
 		newpos := actualPos +1; 
-		//startTimer:= TRUE;
 	END_IF
+ELSE
+	newpos := actualpos;
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="POU_MoveToPos">
+      <LineId Id="69" Count="0" />
       <LineId Id="17" Count="0" />
       <LineId Id="49" Count="1" />
-      <LineId Id="18" Count="7" />
-      <LineId Id="47" Count="0" />
-      <LineId Id="26" Count="1" />
-      <LineId Id="48" Count="0" />
-      <LineId Id="28" Count="0" />
+      <LineId Id="18" Count="1" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="23" Count="5" />
+      <LineId Id="70" Count="1" />
       <LineId Id="9" Count="0" />
     </LineIds>
   </POU>
