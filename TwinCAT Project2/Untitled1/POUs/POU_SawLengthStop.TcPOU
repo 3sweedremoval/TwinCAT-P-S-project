@@ -6,8 +6,11 @@ VAR
 	requiredSawingLength : INT;
 	sawingStopPos: int;
 	posReached : BOOL;	
-	movingSpeed: INT := 20; // mm/s
+	movingSpeed: INT := 200; // mm/s
 	metalAgainstStop: BOOL;
+	test : INT ;
+	test1: INT;
+	pou_movetopos1 : pou_movetopos;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -17,13 +20,22 @@ IF gvl.startButtonLengthStop THEN
 	IF requiredSawingLength = sawingStopPos THEN
 		posReached := TRUE;
 	ELSE
-		sawingStopPos := pou_moveToPos(actualPos := sawingStopPos, requiredPos := requiredSawingLength, speed := movingSpeed);
+		posReached := FALSE;
+		pou_movetopos1(requiredpos := requiredsawinglength, actualpos:= sawingstoppos, speed := movingspeed, newpos => sawingstoppos);
 	END_IF
+END_IF
+
+IF requiredSawingLength <> sawingStopPos THEN
+	posReached := FALSE;
 END_IF
 
 IF metalAgainstStop THEN
 	gvl.metalIsToStop := TRUE;
-END_IF]]></ST>
+ELSE 
+	gvl.metalIsToStop := FALSE;
+END_IF
+
+gvl.stopposReached := posreached;]]></ST>
     </Implementation>
     <LineIds Name="POU_SawLengthStop">
       <LineId Id="15" Count="0" />
@@ -31,12 +43,18 @@ END_IF]]></ST>
       <LineId Id="5" Count="1" />
       <LineId Id="11" Count="0" />
       <LineId Id="14" Count="0" />
-      <LineId Id="18" Count="0" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="51" Count="0" />
       <LineId Id="10" Count="0" />
       <LineId Id="7" Count="0" />
+      <LineId Id="66" Count="3" />
       <LineId Id="23" Count="0" />
       <LineId Id="22" Count="0" />
-      <LineId Id="24" Count="1" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="53" Count="1" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="50" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
