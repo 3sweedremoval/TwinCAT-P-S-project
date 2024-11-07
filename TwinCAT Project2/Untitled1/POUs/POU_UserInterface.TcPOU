@@ -15,24 +15,33 @@ VAR
 	
 	
 	signStartClamping: BOOL;
+	timerin: BOOL;
+	timertime: TIME;
+	timerout: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF startButtonLengthStop THEN
-	gvl.requiredSawingLength := inputSawingLength;
+      <ST><![CDATA[gvl.requiredSawingLength := inputSawingLength;
+IF startButtonLengthStop THEN
 	gvl.startButtonLengthStop := TRUE;
 END_IF
 
-IF gvl.stopPosReached THEN
+IF gvl.stopPosReached and not gvl.metalIsToStop THEN
 	gvl.startButtonLengthStop:= FALSE;
 	messagemovemetaltostop := TRUE;
+ELSE
+		messagemovemetaltostop := FALSE;
 END_IF
 
 signStartClamping := gvl.metalIsToStop;
 gvl.sawingSpeed := inputsawingspeed;
 
-IF gvl.metalIsToStop AND startClamp THEN
+IF  startClamp THEN
 	gvl.startClamp := TRUE;
+	
+END_IF
+
+IF gvl.metalIsToStop THEN
 	messagemovemetaltostop := FALSE; 
 END_IF
 
@@ -43,28 +52,37 @@ END_IF
 IF gvl.sawingProcessDone THEN
 	sawingDone :=TRUE;
 	gvl.startClamp := FALSE;
-	timer(in:= TRUE, pt := T#3S);
+	timerin := TRUE;
+	timertime := T#3S;
 END_IF
 
-IF timer.Q THEN
+IF timerout THEN
 	sawingdone:= FALSE;
-	timer.IN := FALSE;
+	timerin := FALSE;
 END_IF
 
+timer(in:= timerin, pt := timertime, q => timerout);
 ]]></ST>
     </Implementation>
     <LineIds Name="POU_UserInterface">
-      <LineId Id="94" Count="2" />
+      <LineId Id="188" Count="0" />
+      <LineId Id="94" Count="0" />
+      <LineId Id="96" Count="0" />
       <LineId Id="99" Count="2" />
       <LineId Id="158" Count="0" />
       <LineId Id="102" Count="0" />
+      <LineId Id="185" Count="1" />
       <LineId Id="122" Count="2" />
       <LineId Id="126" Count="0" />
       <LineId Id="106" Count="2" />
       <LineId Id="160" Count="0" />
-      <LineId Id="109" Count="7" />
+      <LineId Id="109" Count="0" />
+      <LineId Id="182" Count="0" />
+      <LineId Id="181" Count="0" />
+      <LineId Id="183" Count="1" />
+      <LineId Id="110" Count="6" />
       <LineId Id="159" Count="0" />
-      <LineId Id="162" Count="0" />
+      <LineId Id="193" Count="1" />
       <LineId Id="117" Count="1" />
       <LineId Id="64" Count="0" />
       <LineId Id="163" Count="0" />
@@ -72,6 +90,7 @@ END_IF
       <LineId Id="164" Count="0" />
       <LineId Id="142" Count="0" />
       <LineId Id="141" Count="0" />
+      <LineId Id="189" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

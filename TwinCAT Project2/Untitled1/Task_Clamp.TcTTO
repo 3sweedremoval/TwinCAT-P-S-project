@@ -3,7 +3,7 @@
   <Task Name="Task_Clamp" Id="{8a8c3303-3fb7-4bdf-900a-2f7fecf4ccb8}">
     <!--CycleTime in micro seconds.-->
     <CycleTime>10000</CycleTime>
-    <Priority>2</Priority>
+    <Priority>10</Priority>
     <PouCall>
       <Name>POU_Clamp</Name>
     </PouCall>

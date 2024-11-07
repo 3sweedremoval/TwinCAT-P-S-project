@@ -2,56 +2,85 @@
 <TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.44">
 	<Project ProjectGUID="{581C12A4-CC46-4AA0-8474-5ED4F22B8CCE}" TargetNetId="39.231.85.117.1.1" Target64Bit="true" ShowHideConfigurations="#x106">
 		<System>
+			<Settings>
+				<IoIdleTask Priority="4"/>
+			</Settings>
 			<Tasks>
-				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
+				<Task Id="3" Priority="14" CycleTime="100000" AmsPort="350" AdtTasks="true">
 					<Name>PlcTask</Name>
 				</Task>
-				<Task Id="4" Priority="1" CycleTime="100000" AmsPort="351" AdtTasks="true">
+				<Task Id="4" Priority="8" CycleTime="100000" AmsPort="351" AdtTasks="true">
 					<Name>Task_Saw</Name>
 				</Task>
-				<Task Id="5" Priority="2" CycleTime="100000" AmsPort="352" AdtTasks="true">
+				<Task Id="5" Priority="10" CycleTime="100000" AmsPort="352" AdtTasks="true">
 					<Name>Task_Clamp</Name>
+				</Task>
+				<Task Id="6" Priority="12" CycleTime="100000" AmsPort="353" AdtTasks="true">
+					<Name>Task_UserInterface</Name>
+				</Task>
+				<Task Id="7" Priority="6" CycleTime="100000" AmsPort="354" AdtTasks="true">
+					<Name>Task_SawLengthStop</Name>
 				</Task>
 			</Tasks>
 		</System>
 		<Plc>
 			<Project GUID="{9BD984E5-7A20-4789-AE20-B703198B7A4D}" Name="Untitled1" PrjFilePath="Untitled1\Untitled1.plcproj" TmcFilePath="Untitled1\Untitled1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Untitled1\Untitled1.tmc" TmcHash="{AB66CF8E-B658-02A2-87F4-E6DDBBA3FB2D}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Untitled1\Untitled1.tmc" TmcHash="{9995265E-E775-D4B4-7637-8FA3C1337C0A}">
 					<Name>Untitled1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>
 						<Context>
 							<Id NeedCalleeCall="true">0</Id>
-							<Name>Task_Saw</Name>
+							<Name>Task_SawLengthStop</Name>
 							<ManualConfig>
-								<OTCID>#x02010040</OTCID>
+								<OTCID>#x02010070</OTCID>
 							</ManualConfig>
-							<Priority>1</Priority>
+							<Priority>6</Priority>
 							<CycleTime>10000000</CycleTime>
 						</Context>
 						<Context>
 							<Id NeedCalleeCall="true">1</Id>
-							<Name>Task_Clamp</Name>
+							<Name>Task_Saw</Name>
 							<ManualConfig>
-								<OTCID>#x02010050</OTCID>
+								<OTCID>#x02010040</OTCID>
 							</ManualConfig>
-							<Priority>2</Priority>
+							<Priority>8</Priority>
 							<CycleTime>10000000</CycleTime>
 						</Context>
 						<Context>
 							<Id NeedCalleeCall="true">2</Id>
+							<Name>Task_Clamp</Name>
+							<ManualConfig>
+								<OTCID>#x02010050</OTCID>
+							</ManualConfig>
+							<Priority>10</Priority>
+							<CycleTime>10000000</CycleTime>
+						</Context>
+						<Context>
+							<Id NeedCalleeCall="true">3</Id>
+							<Name>Task_UserInterface</Name>
+							<ManualConfig>
+								<OTCID>#x02010060</OTCID>
+							</ManualConfig>
+							<Priority>12</Priority>
+							<CycleTime>10000000</CycleTime>
+						</Context>
+						<Context>
+							<Id NeedCalleeCall="true">4</Id>
 							<Name>PlcTask</Name>
 							<ManualConfig>
 								<OTCID>#x02010030</OTCID>
 							</ManualConfig>
-							<Priority>20</Priority>
+							<Priority>14</Priority>
 							<CycleTime>10000000</CycleTime>
 						</Context>
 					</Contexts>
 					<TaskPouOids>
-						<TaskPouOid Prio="1" OTCID="#x08502002"/>
-						<TaskPouOid Prio="2" OTCID="#x08502003"/>
-						<TaskPouOid Prio="20" OTCID="#x08502001"/>
+						<TaskPouOid Prio="6" OTCID="#x08502005"/>
+						<TaskPouOid Prio="8" OTCID="#x08502002"/>
+						<TaskPouOid Prio="10" OTCID="#x08502003"/>
+						<TaskPouOid Prio="12" OTCID="#x08502004"/>
+						<TaskPouOid Prio="14" OTCID="#x08502001"/>
 					</TaskPouOids>
 				</Instance>
 			</Project>

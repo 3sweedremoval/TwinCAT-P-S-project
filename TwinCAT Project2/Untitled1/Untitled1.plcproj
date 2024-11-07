@@ -36,9 +36,6 @@
     <Compile Include="POUs\POU_Clamp.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\POU_Lubrication.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\POU_Saw.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -54,10 +51,20 @@
     <Compile Include="Task_Saw.TcTTO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Task_SawLengthStop.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Task_UserInterface.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Visualization Manager.TcVMO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="VISUs\Visualization.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="VISUs\Visualization_1.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
     </Compile>
@@ -122,6 +129,10 @@
     <PlaceholderReference Include="Tc3_Module">
       <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc3_Module</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="VisuDialogs">
+      <DefaultResolution>VisuDialogs, * (System)</DefaultResolution>
+      <Namespace>VisuDialogs</Namespace>
     </PlaceholderReference>
   </ItemGroup>
   <ItemGroup>

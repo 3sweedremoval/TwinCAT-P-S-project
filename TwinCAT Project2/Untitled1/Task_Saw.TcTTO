@@ -3,7 +3,7 @@
   <Task Name="Task_Saw" Id="{2fe50ef6-f7f3-471e-bc15-3de628216f7a}">
     <!--CycleTime in micro seconds.-->
     <CycleTime>10000</CycleTime>
-    <Priority>1</Priority>
+    <Priority>8</Priority>
     <PouCall>
       <Name>POU_Saw</Name>
     </PouCall>

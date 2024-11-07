@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Task Name="Task_SawLengthStop" Id="{5eaa016a-46fd-46e0-bf32-bb2f0c101300}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>10000</CycleTime>
+    <Priority>6</Priority>
+    <PouCall>
+      <Name>POU_SawLengthStop</Name>
+    </PouCall>
+    <TaskFBGuid>{ee94bb90-1307-4375-a821-ca9b6c08e88a}</TaskFBGuid>
+    <Fb_init>{60c487dc-bc12-4947-b158-2245374393d8}</Fb_init>
+    <Fb_exit>{4491278d-65bb-4926-a110-ac1ffba6aa35}</Fb_exit>
+    <CycleUpdate>{52c4a4f8-2181-4deb-b88a-6a111b8167d8}</CycleUpdate>
+    <PostCycleUpdate>{1fc1156d-2787-4a45-b6ac-f35c43a86deb}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>

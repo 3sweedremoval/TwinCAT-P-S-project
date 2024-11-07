@@ -4,7 +4,98 @@
     <XmlArchive>
       <Data>
         <o xml:space="preserve" t="GlobalTextListObject">
-          <l n="TextList" t="ArrayList" />
+          <l n="TextList" t="ArrayList" cet="TextListRow">
+            <o>
+              <v n="TextID">"882"</v>
+              <v n="TextDefault">"%i length"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"543"</v>
+              <v n="TextDefault">"%i mm"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"515"</v>
+              <v n="TextDefault">"%i speed"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"510"</v>
+              <v n="TextDefault">"%imm"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"454"</v>
+              <v n="TextDefault">"clamped"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"256"</v>
+              <v n="TextDefault">"Label"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"353"</v>
+              <v n="TextDefault">"metal is to stop "</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"889"</v>
+              <v n="TextDefault">"move metal to stop"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"518"</v>
+              <v n="TextDefault">"push metal to stop"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"621"</v>
+              <v n="TextDefault">"saw"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"797"</v>
+              <v n="TextDefault">"saw hight"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"213"</v>
+              <v n="TextDefault">"sawing done"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"864"</v>
+              <v n="TextDefault">"sawing length"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"276"</v>
+              <v n="TextDefault">"sawing speed"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"154"</v>
+              <v n="TextDefault">"sawing stop pos"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"117"</v>
+              <v n="TextDefault">"start clamp"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"359"</v>
+              <v n="TextDefault">"start length stop"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"315"</v>
+              <v n="TextDefault">"start proces"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+          </l>
           <l n="Languages" t="ArrayList" />
           <v n="GuidInit">{4b0debfb-3863-4ea4-9e42-090967acf51a}</v>
           <v n="GuidReInit">{8bbf0cc2-8575-4c90-9254-21c6cb8e98f7}</v>
@@ -15,6 +106,8 @@
         <Type n="ArrayList">System.Collections.ArrayList</Type>
         <Type n="GlobalTextListObject">{63784cbb-9ba0-45e6-9d69-babf3f040511}</Type>
         <Type n="Guid">System.Guid</Type>
+        <Type n="String">System.String</Type>
+        <Type n="TextListRow">{53da1be7-ad25-47c3-b0e8-e26286dad2e0}</Type>
       </TypeList>
     </XmlArchive>
   </GlobalTextList>
