@@ -17,7 +17,7 @@ timer(in:=clamping, pt:=Clamptime);
 
 IF timer.Q THEN
 	clampingDone := TRUE;
-ELSE
+ELSIF gvl.sawingProcessDone THEN
 	clampingDone := FALSE;
 END_IF]]></ST>
     </Implementation>
