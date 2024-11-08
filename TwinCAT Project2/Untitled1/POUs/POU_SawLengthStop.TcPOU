@@ -6,11 +6,12 @@ VAR
 	requiredSawingLength : INT;
 	sawingStopPos: int;
 	posReached : BOOL;	
-	movingSpeed: INT := 200; // mm/s
 	metalAgainstStop: BOOL;
-	test : INT ;
-	test1: INT;
 	pou_movetopos1 : pou_movetopos;
+END_VAR
+
+VAR CONSTANT
+	movingSpeed: INT := 200; // mm/s
 END_VAR
 ]]></Declaration>
     <Implementation>

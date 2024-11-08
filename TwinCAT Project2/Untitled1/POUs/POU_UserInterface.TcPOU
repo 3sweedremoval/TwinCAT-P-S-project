@@ -4,20 +4,18 @@
     <Declaration><![CDATA[PROGRAM POU_UserInterface
 VAR
 	inputSawingLength : INT;
-	inputSawingSpeed: INT :=1;
+	inputSawingSpeed: INT :=1;	//default value
 	startButtonLengthStop: BOOL;
 	messageMoveMetalToStop : BOOL;
 	startClamp : BOOL;
-	oilProblem : BOOL;
 	sawingDone: BOOL;
-	test : INT ;
-	timer : ton;
+	timer1 : ton;
 	
 	
 	signStartClamping: BOOL;
-	timerin: BOOL;
-	timertime: TIME;
-	timerout: BOOL;
+	timer1Start: BOOL;
+	time1: TIME;
+	timer1Reached: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -45,23 +43,19 @@ IF gvl.metalIsToStop THEN
 	messagemovemetaltostop := FALSE; 
 END_IF
 
-IF gvl.oilProblem THEN
-	oilProblem := TRUE;
-END_IF
-
 IF gvl.sawingProcessDone THEN
 	sawingDone :=TRUE;
 	gvl.startClamp := FALSE;
-	timerin := TRUE;
-	timertime := T#3S;
+	timer1Start := TRUE;
+	time1 := T#3S;
 END_IF
 
-IF timerout THEN
+IF timer1reached THEN
 	sawingdone:= FALSE;
-	timerin := FALSE;
+	timer1start := FALSE;
 END_IF
 
-timer(in:= timerin, pt := timertime, q => timerout);
+timer1(in:= timer1start, pt := time1, q => timer1reached);
 ]]></ST>
     </Implementation>
     <LineIds Name="POU_UserInterface">
@@ -80,7 +74,7 @@ timer(in:= timerin, pt := timertime, q => timerout);
       <LineId Id="182" Count="0" />
       <LineId Id="181" Count="0" />
       <LineId Id="183" Count="1" />
-      <LineId Id="110" Count="6" />
+      <LineId Id="114" Count="2" />
       <LineId Id="159" Count="0" />
       <LineId Id="193" Count="1" />
       <LineId Id="117" Count="1" />
