@@ -11,24 +11,22 @@ VAR_OUTPUT
 	newpos : INT;
 END_VAR
 VAR
-	startTimer: BOOL;
+	timer1Start: BOOL;
+	timer1Reached : BOOL;
 	calculatedTime: TIME;
 
-	timer: ton;
-	testbuitenif: INT;
-	test: INT;
-
+	timer1: ton;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
-IF timer.IN = FALSE THEN
-	 starttimer:=TRUE;
+IF timer1.IN = FALSE THEN
+	 timer1start:=TRUE;
 END_IF
 calculatedTime :=INT_TO_TIME(1000/speed);
-timer(in:= startTimer, pt:= calculatedTime);
-IF timer.Q THEN
-	startTimer:=FALSE;
+
+IF timer1reached THEN
+	timer1start:=FALSE;
 	IF requiredPos < actualpos THEN
 		newpos := actualPos -1;
 	ELSIF requiredpos > actualpos THEN
@@ -36,7 +34,9 @@ IF timer.Q THEN
 	END_IF
 ELSE
 	newpos := actualpos;
-END_IF]]></ST>
+END_IF
+
+timer1(in:= timer1start, pt:= calculatedTime, q=> timer1reached);]]></ST>
     </Implementation>
     <LineIds Name="POU_MoveToPos">
       <LineId Id="69" Count="0" />
@@ -47,6 +47,8 @@ END_IF]]></ST>
       <LineId Id="23" Count="5" />
       <LineId Id="70" Count="1" />
       <LineId Id="9" Count="0" />
+      <LineId Id="91" Count="0" />
+      <LineId Id="90" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
