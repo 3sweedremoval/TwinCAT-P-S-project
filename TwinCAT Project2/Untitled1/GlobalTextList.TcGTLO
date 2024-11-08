@@ -31,6 +31,16 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"329"</v>
+              <v n="TextDefault">"input sawing length"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"170"</v>
+              <v n="TextDefault">"input sawing speed"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"256"</v>
               <v n="TextDefault">"Label"</v>
               <l n="LanguageTexts" t="ArrayList" />

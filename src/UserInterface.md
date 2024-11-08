@@ -3,6 +3,7 @@
 ```plantuml
 
 @startuml
+
 [*] --> Idle
 
 Idle : Waiting for user input
