@@ -6,29 +6,29 @@
 Idle : state = 0
 Idle : startSawing = FALSE
 Idle : sawingDone = FALSE
-Idle --> Start_Sawing : startSawing = TRUE and sawingDone = FALSE
+Idle --> Initialize_Sawing : startSawing = TRUE 
 
-Start_Sawing : state = 1
-Start_Sawing : actualPos = 100, timer1 active
-Start_Sawing --> Saw_Down : timer1.q = TRUE
+Initialize_Sawing : state = 1
+Initialize_Sawing : actualPos = topPos, timer1 active (2s)
+Initialize_Sawing --> Move_to_Bottom : timer1reached = TRUE
 
-Saw_Down : state = 2
-Saw_Down : Moving to bottomPos
-Saw_Down --> Pause_at_Bottom : actualPos <= bottomPos and output2 = TRUE
+Move_to_Bottom : state = 2
+Move_to_Bottom : Moving to bottomPos, timer1 active (1s)
+Move_to_Bottom --> Pause_at_Bottom : actualPos <= bottomPos and timer1reached = TRUE
 
 Pause_at_Bottom : state = 3
-Pause_at_Bottom : timer active
-Pause_at_Bottom --> Saw_Up : timer.Q = TRUE
+Pause_at_Bottom : timer1 active (2s)
+Pause_at_Bottom --> Move_to_Top : timer1reached = TRUE
 
-Saw_Up : state = 4
-Saw_Up : Moving to topPos
-Saw_Up --> Pause_at_Top : actualPos >= topPos
+Move_to_Top : state = 4
+Move_to_Top : Moving to topPos
+Move_to_Top --> Pause_at_Top : actualPos >= topPos
 
 Pause_at_Top : state = 5
-Pause_at_Top : timer active, input2 = TRUE, time2 = T#2S
-Pause_at_Top --> Reset_and_Restart : output2 = TRUE
+Pause_at_Top : timer1 active (2s)
+Pause_at_Top --> Reset_and_Restart : timer1reached = TRUE
 
 Reset_and_Restart : state = 6
-Reset_and_Restart : input2 = TRUE, time2 = T#2S
-Reset_and_Restart --> Idle : output2 = TRUE and reset sawingDone
+Reset_and_Restart : timer1 active (2s)
+Reset_and_Restart --> Idle : timer1reached = TRUE and reset sawingDone
 @enduml
