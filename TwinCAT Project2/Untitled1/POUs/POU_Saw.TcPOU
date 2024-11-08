@@ -3,23 +3,27 @@
   <POU Name="POU_Saw" Id="{20362c0f-2be3-4923-bb5c-847f6c28e7d5}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM POU_Saw
 VAR
-	sawingSpeed : INT;
+	sawingSpeed : INT;	
 	startSawing: BOOL;
-	bottomPos: INT := 0;
-	topPos: INT := 100;
 	saw :BOOL;
 	actualPos: INT;
 	sawingDone: BOOL;
-	pou_movetopos1 : pou_movetopos;
-	goUp : BOOL;
+	pou_movetopos1 : pou_movetopos;	
 	state : INT;
-	timer : ton;
-	timer1 : ton;
-	timer2 : ton;
 	bottomposreached: BOOL;
-	input2: BOOL;
-	time2: TIME;
-	output2 :bool;
+	
+	//timers	
+	timer1 : ton;
+
+	timer1Start: BOOL;
+	time1: TIME;
+	timer1Reached :BOOL;	
+	
+END_VAR
+
+VAR CONSTANT
+	bottomPos: INT := 0;
+	topPos: INT := 100;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -30,9 +34,8 @@ GVL.bottomPosReached := bottomposreached;
 
 IF NOT startsawing THEN
 	state := 0;
-	sawingDone:= FALSE;
-	
-ELSIF state = 0 AND NOT sawingDone THEN
+	sawingDone:= FALSE;	
+ELSIF state = 0 THEN
 	state :=1;
 END_IF
 
@@ -41,110 +44,80 @@ CASE state OF
 	;
 	1:
 		actualpos := 100;
-		timer1(in :=TRUE, pt:= T#2S);
+		timer1start:= TRUE;
+		time1 := T#2S;
 		gvl.metalIsToStop := FALSE;
-		IF timer1.q THEN			
+		IF timer1.q THEN
+			timer1start:= FALSE;			
 			state:= 2;
-			timer1(in:= FALSE);
 			saw := TRUE;
 		END_IF
 	2:
-		input2 := TRUE;
-		time2 := T#1S;
+		Timer1Start := TRUE;
+		time1 := T#1S;
 		POU_MoveToPos1(actualPos := actualPos, requiredPos := bottomPos, speed := sawingSpeed, newpos => actualpos);
-		IF actualpos <= bottompos AND output2 THEN
-			input2:=FALSE;
+		IF actualpos <= bottompos AND timer1reached THEN
+			Timer1Start:=FALSE;
 			bottomposreached := TRUE;
 			state := 3;
 			saw := false;
 		END_IF	
 
 	3:
-	 	timer(in:= TRUE, pt := T#2S);
-		IF timer.Q THEN
+		timer1start:= TRUE;
+		time1 := T#2S;
+		IF timer1reached THEN
+			timer1start:= FALSE;
 			state := 4;
-			timer(in:=FALSE);
 		END_IF
 	4:
 		POU_MoveToPos1(actualPos := actualPos, requiredPos := toppos, speed := sawingSpeed, newpos => actualpos);
 	 	IF actualpos >= toppos THEN
 			state := 5;
-			//sawingDone:= TRUE;
 		END_IF
 	5:
-		input2:= TRUE;
-		time2 := T#2S;
-		IF output2 THEN
+		Timer1Start:= TRUE;
+		time1 := T#2S;
+		IF timer1reached THEN
+			timer1start:= FALSE;
 			sawingDone:= TRUE;
 			state := 6;
-			input2:= FALSE;
 		END_IF	
 	6:
-		input2:= TRUE;
-		time2 := T#2S;
-		IF output2 THEN
+		Timer1Start:= TRUE;
+		time1 := T#2S;
+		IF timer1reached THEN
+			Timer1Start:= FALSE;
 			sawingDone:= FALSE;
 			state := 0;
-			input2:= FALSE;
 		END_IF	
 END_CASE
 
-timer2(in:= input2, pt:= time2, q =>output2);
+timer1(in:= Timer1Start, pt:= time1, q =>timer1reached);
 
 ]]></ST>
     </Implementation>
     <LineIds Name="POU_Saw">
-      <LineId Id="5" Count="0" />
-      <LineId Id="59" Count="0" />
-      <LineId Id="97" Count="0" />
-      <LineId Id="183" Count="0" />
-      <LineId Id="123" Count="2" />
-      <LineId Id="233" Count="0" />
-      <LineId Id="141" Count="0" />
-      <LineId Id="130" Count="1" />
-      <LineId Id="126" Count="0" />
-      <LineId Id="118" Count="1" />
-      <LineId Id="121" Count="0" />
-      <LineId Id="127" Count="0" />
-      <LineId Id="152" Count="1" />
-      <LineId Id="158" Count="0" />
-      <LineId Id="184" Count="0" />
-      <LineId Id="154" Count="1" />
-      <LineId Id="160" Count="0" />
-      <LineId Id="189" Count="0" />
-      <LineId Id="156" Count="0" />
-      <LineId Id="128" Count="0" />
-      <LineId Id="177" Count="0" />
-      <LineId Id="221" Count="0" />
-      <LineId Id="187" Count="0" />
-      <LineId Id="185" Count="0" />
-      <LineId Id="214" Count="0" />
-      <LineId Id="180" Count="1" />
-      <LineId Id="190" Count="0" />
-      <LineId Id="132" Count="0" />
-      <LineId Id="135" Count="0" />
-      <LineId Id="129" Count="0" />
-      <LineId Id="140" Count="0" />
-      <LineId Id="149" Count="1" />
-      <LineId Id="188" Count="0" />
-      <LineId Id="151" Count="0" />
-      <LineId Id="142" Count="0" />
-      <LineId Id="144" Count="2" />
-      <LineId Id="179" Count="0" />
-      <LineId Id="147" Count="0" />
-      <LineId Id="143" Count="0" />
-      <LineId Id="208" Count="0" />
-      <LineId Id="223" Count="0" />
-      <LineId Id="210" Count="0" />
-      <LineId Id="213" Count="0" />
-      <LineId Id="211" Count="1" />
-      <LineId Id="209" Count="0" />
-      <LineId Id="226" Count="6" />
-      <LineId Id="225" Count="0" />
-      <LineId Id="122" Count="0" />
-      <LineId Id="216" Count="0" />
-      <LineId Id="215" Count="0" />
-      <LineId Id="217" Count="0" />
+      <LineId Id="267" Count="7" />
+      <LineId Id="276" Count="8" />
+      <LineId Id="351" Count="1" />
+      <LineId Id="286" Count="1" />
+      <LineId Id="353" Count="0" />
+      <LineId Id="288" Count="0" />
+      <LineId Id="290" Count="13" />
+      <LineId Id="355" Count="0" />
+      <LineId Id="357" Count="0" />
+      <LineId Id="305" Count="0" />
+      <LineId Id="358" Count="0" />
+      <LineId Id="306" Count="0" />
+      <LineId Id="308" Count="4" />
+      <LineId Id="314" Count="4" />
+      <LineId Id="359" Count="0" />
+      <LineId Id="319" Count="1" />
+      <LineId Id="322" Count="4" />
+      <LineId Id="360" Count="0" />
+      <LineId Id="327" Count="1" />
+      <LineId Id="330" Count="4" />
       <LineId Id="78" Count="0" />
     </LineIds>
   </POU>
