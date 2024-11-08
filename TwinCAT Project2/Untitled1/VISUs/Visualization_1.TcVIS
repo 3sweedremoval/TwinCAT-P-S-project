@@ -1375,7 +1375,7 @@
                     </o>
                     <o>
                       <v n="Id">390574330L</v>
-                      <v n="Value">"sawing speed"</v>
+                      <v n="Value">"input sawing speed"</v>
                     </o>
                     <o>
                       <v n="Id">3729828405L</v>
@@ -1418,7 +1418,7 @@
                     </o>
                     <o>
                       <v n="Id">823443203L</v>
-                      <v n="Value">"276"</v>
+                      <v n="Value">"170"</v>
                     </o>
                   </l>
                 </o>
@@ -1665,7 +1665,7 @@
                     </o>
                     <o>
                       <v n="Id">390574330L</v>
-                      <v n="Value">"sawing length"</v>
+                      <v n="Value">"input sawing length"</v>
                     </o>
                     <o>
                       <v n="Id">3729828405L</v>
@@ -1708,7 +1708,7 @@
                     </o>
                     <o>
                       <v n="Id">823443203L</v>
-                      <v n="Value">"864"</v>
+                      <v n="Value">"329"</v>
                     </o>
                   </l>
                 </o>
