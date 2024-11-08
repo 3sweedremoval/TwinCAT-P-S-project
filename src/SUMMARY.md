@@ -1,3 +1,8 @@
 # Summary
 
-- [Chapter 1](./chapter_1.md)
+- [State diagrams](./StateDiagrams.md)
+  - [Clamping](./Clamping.md)
+  - [Saw](./Saw.md)
+  - [SawLengthStop](./SawLengthStop.md)
+  - [Userinterface](./UserInterface.md)
+
