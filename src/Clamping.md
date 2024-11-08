@@ -12,7 +12,7 @@ Start_Clamping : timerstart = TRUE
 Start_Clamping --> Clamping : timerstart = TRUE
 
 Clamping : Timer active, clamping in progress
-Clamping --> Clamped : timerreached = TRUE (3Sec)
+Clamping --> Clamped : timerreached = TRUE (3s)
 
 Clamped : clampingDone = TRUE
 Clamped --> Release_Clamp : gvl.sawingProcessDone = TRUE
