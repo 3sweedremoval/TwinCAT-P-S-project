@@ -7,30 +7,48 @@ VAR
 	clamping: BOOL;
 	clampingDone : bool;
 	timer: Ton;
-	Clamptime: TIME := T#3S;
+	timerStart : BOOL;
+	timerReached: BOOL;
+END_VAR
+
+VAR CONSTANT
+	clampTime: TIME := T#3S;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[clamping := gvl.startClamp;
 gvl.clamped := clampingDone;
-timer(in:=clamping, pt:=Clamptime);		
 
-IF timer.Q THEN
+
+timer(in:=clamping, pt:=Clamptime);		
+IF clamping THEN
+	timerstart := TRUE;
+	IF timerreached THEN
+		timerstart:= FALSE;
 	clampingDone := TRUE;
-ELSIF gvl.sawingProcessDone THEN
+	ELSIF gvl.sawingProcessDone THEN
 	clampingDone := FALSE;
-END_IF]]></ST>
+	END_IF
+END_IF
+
+
+timer(in:= timerstart, pt:= clamptime, q => timerreached);]]></ST>
     </Implementation>
     <LineIds Name="POU_Clamp">
       <LineId Id="8" Count="0" />
       <LineId Id="27" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="40" Count="0" />
       <LineId Id="13" Count="0" />
       <LineId Id="20" Count="0" />
-      <LineId Id="19" Count="0" />
-      <LineId Id="22" Count="0" />
-      <LineId Id="24" Count="0" />
-      <LineId Id="26" Count="0" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="45" Count="2" />
+      <LineId Id="42" Count="1" />
       <LineId Id="23" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="36" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
