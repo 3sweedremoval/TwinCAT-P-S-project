@@ -3,26 +3,11 @@
   <GVL Name="GVL" Id="{bd177064-a0ee-43fc-a48f-6aabfaaeb17b}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
-	//StateClamp : INT := 0;
-	//SpeedSetting : INT := 0;
-	//StartButton : BOOL := FALSE;
-	//UpperSwitch : BOOL := FALSE;
-	//DownSwitch: BOOL := FALSE;
-	//LubricationPump : BOOL := FALSE;
-	//SawEnabled	: BOOL := FALSE;
-	//SawDown : BOOL := FALSE;
-	//SawUp : BOOL := FALSE;
-	//Clamping: BOOL := FALSE;
-	//StartClamping : BOOL := FALSE;
-	//ClampingDone : BOOL :=FALSE;
-	//Timer_wait : ton;
-	
-	
+
 	requiredSawingLength : INT;
 	startButtonLengthStop: BOOL;
 	messageMoveMetalToStop : BOOL;
 	startClamp : BOOL;
-	oilProblem : BOOL;
 	sawingProcessDone: BOOL; 
 	
 	stopPosReached : BOOL;
