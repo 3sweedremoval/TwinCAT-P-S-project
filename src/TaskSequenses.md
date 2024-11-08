@@ -34,9 +34,17 @@ deactivate Clamp
 
 UI -> Saw : Start sawing with `gvl.sawingSpeed`
 activate Saw
-Saw -> Saw : Move `topPos` to `bottomPos`
+Saw -> Saw : Move from `topPos` to `bottomPos`
+Saw -> UI : Set `gvl.bottomPosReached = TRUE`
+
+Saw -> Saw : Move back to `topPos`
 Saw -> UI : Set `gvl.sawingProcessDone = TRUE`
 deactivate Saw
+
+UI -> Clamp : Set `gvl.startClamp = FALSE` (declamp)
+activate Clamp
+Clamp -> UI : Set `gvl.clamped = FALSE`
+deactivate Clamp
 
 UI -> User : Display "Sawing complete"
 UI -> UI : Start `timer1` to delay reset of `gvl.sawingProcessDone`
